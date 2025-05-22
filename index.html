@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curriculum de Ângela Peixoto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;/*DON´T CHANGE! */
+            padding: 0;/*DON´T CHANGE! */
+            background-color: #2E1A14;/*DON´T CHANGE! */
+            color: #B8835E;/*DON´T CHANGE! */
+            overflow: auto; /*DON´T CHANGE! */
+            overflow-wrap: normal;/*DON´T CHANGE! */
+        }
+        .container {
+            width: 90%;
+            height: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 15px #2c29291a;
+            border-radius: 10px;
+            position: relative; /* Para que o posicionamento absoluto funcione dentro da div */
+        }
+
+        h1{ 
+            font-size: 8vw; /* Aumentar o tamanho do texto */
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            -webkit-text-stroke: 5px #edc41e; /* Borda branca no texto */
+            text-align: left;
+            margin-left: 15lvw;
+        }
+        
+        h2 {
+            font-size: 2vw; /* Aumentar o tamanho do texto */
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: left;
+            margin-left: 30lvw;
+            text-decoration: underline;
+        }
+        
+        h3 {
+            color: #B8835E;
+        }
+
+        /* CSS NAVEGADOR*/
+        nav {
+            padding: 2% 20px;
+            display: block;
+            position:fixed; 
+            top:0;
+            width: 100%;
+            height: auto;
+            overflow: auto;/*DON´T CHANGE! */
+            overflow-wrap: normal;/*DON´T CHANGE! */
+            text-align: center;
+            z-index: 1000;
+            opacity: 0.4;
+            background-color: #6c7274cc; /* Aumentei a opacidade */
+            transition: background-color 0.3s ease;
+        }
+        nav a {
+            color: #e6cf75;
+            text-decoration: none;
+            margin-left: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.10s;
+            font-style: italic;
+            text-align: right;
+        }
+        nav a:hover {
+            color: #752121;
+            opacity: 0.5;
+            font-size: larger;
+            text-decoration: underline;
+        }
+
+        nav:hover {
+            opacity: 0.8;
+        }
+
+        /* CSS HOMEPAGE */
+        .home {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between; /* Garante que o conteúdo e a imagem ficam separados */
+        }
+
+        .home-content {
+            padding: 20px;
+        }
+
+        .home-image {
+            position:fixed;
+            top: 0;
+            right: 0;
+            margin-right: 0;
+            width: 40vw; /* 40% da largura da página */
+            height: 100vh; /* 100% da altura da página */
+            z-index: -1;
+        }
+        .home img:hover {
+            opacity: 0.5;
+        }
+        .home img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Mantém a proporção da imagem e cobre todo o espaço */
+            border-radius: 0; /* Remove a borda arredondada para um visual mais clean */
+        }
+
+        .contact-btn {
+            background-color: #3C0606;
+            color: #e6cf75;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            border-style:solid;
+            font-size: 15px;
+            font-style: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 150px;
+            margin-left: lvw;
+        }
+        .contact-btn:hover {
+            background-color: #961919;
+        }
+        .page {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+
+        /* contacto_style */
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: left;
+            font-style: bold;
+            margin: 5%;
+        }
+        .contact-form {
+            width: 48%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .contact-info {
+            width: 48%;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e6cf75;
+            border-radius: 5px;
+            box-sizing: border-box;
+            overflow: auto;
+            overflow-wrap: normal;
+        }
+        .contact-info_networks a img {
+            width: 50px; /* Aumenta o tamanho */
+            height: 50px;
+            filter: invert(77%) sepia(46%) saturate(400%) hue-rotate(1deg) brightness(92%) contrast(92%);
+            margin-right: 10px; /* Espaço à direita de cada ícone */
+        }
+
+        /* Efeito fade-in para as imagens */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .experience_images {
+            display: flex;
+            justify-content: space-around;  /* Adiciona espaçamento entre as imagens */
+            align-items: center;  /* Alinha as imagens no centro */
+            width: 50%;  /* Aumenta a largura do carrossel para 100% da tela */
+            height: 50px;  /* Aumenta a altura do carrossel */
+            overflow: hidden;  /* Garante que as imagens que saírem do carrossel não sejam visíveis */
+        }
+
+        .experience_images img {
+            width: 100%;  /* Aumenta o tamanho das imagens para 25% da largura do contêiner */
+            height: auto;  /* Ajusta automaticamente a altura para manter a proporção */
+            object-fit: cover;  /* Garante que a imagem cubra toda a área disponível sem distorcer */
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Adiciona uma transição suave de fade-in */
+        }
+
+        .experience_images img.active {
+            opacity: 1;  /* Exibe a imagem com efeito fade-in */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU BAR -->
+    <nav>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('contact')">Contato</a>
+        <a href="#" onclick="showPage('experience')">Experiência</a>
+        <a href="#" onclick="showPage('education')">Formação</a>
+        <!-- <a href="#" onclick="showPage('skills')">Habilidades</a> -->
+        <a href="#" onclick="showPage('volunteer')">Voluntariado</a>
+    </nav>
+
+    <!-- HOMEPAGE -->
+    <div id="home" class="container home page active">
+        <div class="home-content">
+            <h1>
+                ÂNGELA
+            </h1>
+            <h1>
+                PEIXOTO
+            </h1>
+            <h2>Software Developer</h2>
+            <br><br><br><br>
+            <button class="contact-btn" onclick="showPage('contact')" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                Contactar
+            </button> 
+        </div>
+        <div class="home-image">
+            <img src="img/homepage_img.jpg" alt="Foto de perfil"/>
+        </div>
+    </div>
+
+    <!-- CONTACTOS C/FORM -->
+    <div id="contact" class="container page">
+        <div class="contact-content">
+            <div class="contact-form">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required />
+
+                    <label for="apelido">Apelido:</label>
+                    <input type="text" id="apelido" name="apelido" placeholder="Apelido" required />
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Ex: exemplo@exemplo.pt" required />
+
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" placeholder="Ex: 912345678" required />
+
+                    <label for="ficheiro">Carregar Ficheiro:</label>
+                    <input type="file" id="ficheiro" name="ficheiro" required />
+
+                    <button class="contact-btn" type="submit">Enviar</button>
+                    <button class="contact-btn" type="reset" class="reset-btn">Reset</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h2>Contato</h2>
+                <p><strong>Tel:</strong>+351 937428648</p>
+                <p><strong>Email:</strong> angelaisabelop@gmail.com</p>
+                <p><strong>Endereço:</strong> Rua da Ponte Nova, nº31, 4705-182 Lomar - Braga</p>
+                <div class="contact-info_networks">
+                    <a href="https://www.instagram.com/"><img src="img/icons/instagram.svg" alt="Instagram"></a>
+                    <a href="https://www.facebook.com"><img src="img/icons/facebook.svg" alt="Facebook"></a>
+                    <a href="https://whatsapp.com/"><img src="img/icons/whatsapp.svg" alt="Whatsapp"></a>
+                    <a href="https://www.linkedin.com"><img src="img/icons/linkedin.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERIENCIA -->
+    <div id="experience" class="container page">
+        <h2 style="margin-top: 5%;">Experiência Profissional</h2>
+        <p><strong>Técnica de Serviço de Suporte Técnico</strong> - Randstad (Março 2023 - Novembro 2024)</p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem quis sint praesentium reiciendis ducimus beatae, esse tenetur necessitatibus alias perferendis. Earum ipsam laborum rem, illo dignissimos modi fugiat beatae ab culpa. Officiis consequuntur, laboriosam, nulla, fugiat dicta obcaecati blanditiis illo ea voluptatibus deserunt consequatur deleniti repellat! Ipsa eum repudiandae illo.
+
+        <p><strong>Técnica de Serviço ao Cliente e Escrituária</strong> - Grupo Primor (2021 - 2023)</p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, inventore fuga distinctio optio soluta saepe velit magni suscipit repudiandae. Beatae quas ex, tempore voluptas repellendus nostrum dolores nisi nulla praesentium ratione vitae earum. Quia nesciunt aliquid eveniet nulla iste debitis incidunt minima a accusantium eum soluta doloremque velit, dolore consectetur.
+        <p><strong>Supervisor Junior - Suporte Técnico</strong> - Randstad/Vodafone (2017 - 2020)</p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima consequatur quaerat modi, incidunt delectus fugiat autem deserunt, rerum, nemo neque tenetur amet voluptate voluptatibus nulla numquam. Rerum illo magni quibusdam! Magnam non quisquam veniam! Error aperiam facere ratione laborum tenetur adipisci pariatur quo quaerat voluptatum fugiat nam, officia quibusdam illum?
+
+        <div class="experience_images">
+            <a href="https://www.randstad.pt/">
+                <img src="img/Randstad.png" alt="Randstad Portugal" width="10%" object-fit="cover" />
+            </a>
+            <a href="https://www.concentrix.com/en-gb/">
+                <img src="img/concentrix.png" alt="Concentrix Portugal" width="10%" object-fit="cover" />
+            </a>
+            <a href="https://grupoprimor.pt/">
+                <img src="img/primor.png" alt="Grupo Primor" width="10%" object-fit="cover" />
+            </a>
+            <a href="https://www.vodafone.pt/">
+                <img src="img/VDF.png" alt="Vodafone Portugal" width="10%" object-fit="cover" />
+            </a>
+        </div>
+    </div>
+
+    <div id="education" class="container page">
+        <h2 style="margin-top: 5%;">Formação</h2>
+        <p><strong>Línguas e Literaturas Europeias</strong> - Universidade do Minho (2013 - 2018)</p> 
+        <a href="https://www.uminho.pt/PT"><img src="img/elach.jpg" alt="Universidade do Minho - Esola de Letras, Artes e Humanidades" width="100px" object-fit="cover"></a>
+        <p><strong>Artes Visuais</strong> - Escola Sec. de Alberto Sampaio (2010 - 2013)</p>
+        <a href="https://aesas.pt/"><img src="img/esas.png" alt="Esola Secundária de Alberto Sampaio" width="100px" object-fit="cover"></a>
+        <ul>
+            <li><i>Primeiros socorros</i></li>
+            <li><i>Dietética e Nutrição</i></li>
+            <li><i>Primeiros socorros</i></li>
+        </ul>
+        <a href="https://aebraga.pt/"><img src="img/aeb.png" alt="Associação Empresarial de Braga" width="100px" object-fit="cover"></a>
+    </div>
+
+    <!-- <div id="skills" class="container page">
+        <h2 style="margin-top: 5%;">Habilidades</h2>
+        <p>CRM, Siebel, SAP, Citrix, MS Office, macOS, Linux</p>
+    </div> -->
+
+    <div id="volunteer" class="container page">
+        <h2 style="margin-top: 5%;">Voluntariado</h2>
+        <a href="https://www.fpf.pt/pt/"><img src="img/fpf.jpeg"></a><p><strong>Coordenadora de equipa de Voluntários - FPF (2015)</strong></p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora possimus expedita blanditiis vitae qui sunt autem voluptates maxime, ad enim voluptas consequatur, eaque deserunt. Laborum deleniti exercitationem sapiente expedita atque delectus placeat quaerat perspiciatis, ex qui odio amet cumque a vero deserunt sunt voluptatibus officia quidem? Voluptas, officia laboriosam!
+        <p></p>
+        <a href="https://acolhimentosenior.pt/unidade-de-prado-braga/"><img src="img/as.png"></a><p><strong>Terapia Linguística - AS - Acolhimento Sénior de Prado (2015)</strong></p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, accusantium. Unde earum necessitatibus assumenda aliquid dolorum dolor atque sit, quas minima! Distinctio maiores sint itaque. Odio aperiam beatae dolores minus optio amet nulla? Culpa aut modi tempore laborum. Ullam, dolorem illo dolor itaque eum natus deleniti illum incidunt est modi?<p></p><a href="https://pt.uefa.com/"><img src="img/fpf.jpeg"></a>
+        <p><strong> Assistente de Media - UEFA (2019)</strong></p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum alias sint culpa minus modi exercitationem nisi possimus! Obcaecati iusto voluptatum dolor quod assumenda aspernatur harum neque praesentium repellendus, minus nam repellat sequi molestias possimus quo laboriosam est, nobis doloremque expedita eaque. Officiis voluptatum error explicabo maiores perspiciatis quibusdam delectus deserunt!
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+    <script>
+        let currentIndex = 0;
+
+        function showNextImage() {
+            const images = document.querySelectorAll('.experience_images img');
+            images.forEach(img => img.classList.remove('active'));  // Remove "active" de todas as imagens
+            currentIndex = (currentIndex + 1) % images.length;  // Avança para a próxima imagem
+            images[currentIndex].classList.add('active');  // Adiciona "active" à imagem atual
+        }
+
+        window.onload = function() {
+            const images = document.querySelectorAll('.experience_images img');
+            images[currentIndex].classList.add('active');  // Exibe a primeira imagem
+            setInterval(showNextImage, 3000);  // Altera a imagem a cada 3 segundos
+        };
+    </script>
+</body>
+</html>
